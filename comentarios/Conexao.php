@@ -13,7 +13,7 @@ class Conexao{
 			$servidor = "127.0.0.1";
 			$usr = "root";
 			$pwd = "";
-			$bd = "banco";
+			$bd = "diario";
 			$this->setCon(new PDO("mysql:host=$servidor;dbname=$bd",$usr,$pwd));
 			$this->con->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION); // Erros em exceções
 		}catch(PDOException $ex){

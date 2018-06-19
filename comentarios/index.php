@@ -1,16 +1,26 @@
+<?php
+session_start();
+$_SESSION["id"] = 1;
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet"> 
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1.0"
+        name="viewport">
+  <meta content="ie=edge"
+        http-equiv="X-UA-Compatible">
+  <link href="https://fonts.googleapis.com/css?family=Anton"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/uikit.min.css" />
+    
+  <title>Document</title>
 </head>
 <body>
-    <style>
+  <style>
         body{
-            background:#000;
+            background: #000;
             
             font-family: 'Anton', sans-serif;
             
@@ -28,6 +38,7 @@
             color:white;
             align-items:center;
             justify-content:center;
+            margin-left: 400px;
         }
         
         #texto{
@@ -35,27 +46,44 @@
             animation: texto 1.0s infinite;
         }
         @keyframes texto{
+            0%{
+
+            }
             50%{
                 opacity: 0;
+                
+            }
+            100%{
+
             }
         }
         .svg{
             height:300px;
             width:300px
         }
-    </style>
-    
-    <form method="post" action="" id="form">
-        <input type="text" name="comentario" class="comentario" id="comentario">
-        <input type="submit" id="enviar">
-    </form>
-    <br/>
-    <div id="comentarios">
-        
-    </div>
-</body>
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script> 
+        .circulo{
+            stroke: #4151CC;
+        }
+  </style>
+  <form action=""
+        id="form"
+        method="post"
+        name="form">
+    <input class="comentario"
+          id="comentario"
+          name="comentario"
+          type="text"> 
+    <input id="enviar"
+          type="submit">
+  </form>
+  <br>
+
+  <div id="comentarios"></div>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="js/uikit.min.js"></script>
+  <script src="js/uikit-icons.min.js"></script> 
+  <script>
+    <?php echo "alert(\"{$_SESSION['id']}\");"; ?>
     fetch('preloder.php')
             .then((response) => {
                 response.text().then((texto) => {
@@ -77,7 +105,7 @@
         e.preventDefault();
         var form = $('#form')[0];
         var formData = new FormData(form);
-
+    /*TESTE:*/
         $.ajax({
             url:'upload.php',
             type: 'POST', 
@@ -110,4 +138,5 @@
     });
     
 </script>
+</body>
 </html>
